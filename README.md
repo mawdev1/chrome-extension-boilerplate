@@ -26,8 +26,8 @@ Ensure you have Node.js installed on your system. You can download it from [Node
 1. **Clone the repository:**
 
 ```bash
-git clone https://github.com/yourusername/your-chrome-extension-repo.git
-cd your-chrome-extension-repo
+git clone https://github.com/mawdev1/chrome-extension-boilerplate.git
+cd chrome-extension-boilerplate
 ```
 
 2. **Install the dependencies**
