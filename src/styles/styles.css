@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  padding: 0px;
+}
+
+#root {
+  width: 600px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: rgb(194, 194, 194);
+}

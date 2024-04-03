@@ -1,7 +1,8 @@
-import testMod from './sampleModule'
-const oneLinerJoke = require('one-liner-joke');
+import api from '../../lib/api' // Adjust the path as necessary
 
-testMod()
+const getJoke = async () => {
+  const joke = await api.getDadJoke()
+  console.log(joke)
+}
 
-let getRandomJoke = oneLinerJoke.getRandomJoke();
-console.log(getRandomJoke)
+getJoke()
