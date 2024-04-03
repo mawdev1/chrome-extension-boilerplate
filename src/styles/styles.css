@@ -12,3 +12,15 @@
   background-color: black;
   color: rgb(194, 194, 194);
 }
+
+.title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.joke-wrapper {
+  display: flex;
+  align-items: center;
+  padding-top: 20px;
+}

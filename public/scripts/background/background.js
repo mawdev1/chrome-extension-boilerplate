@@ -1,9 +1,9 @@
 // Backgound / Service Worker
-const RPC = require('../../lib/rpc') // Adjust the path as necessary
+const RPC = require('../../lib/rpc')
 
 const rpc = new RPC()
 
-// Example method
+// Example method - thse can be modularized for a cleaner background script
 rpc.registerMethod('getDadJoke', async () => {
   const response = await fetch('https://icanhazdadjoke.com/', {
     headers: {
