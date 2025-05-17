@@ -17,20 +17,28 @@ const App: React.FC = () => {
   return (
     <div>
       <h1 className="title">Chrome Extension Boilerplate</h1>
-      <h2>Features include:</h2>
+      <h2>Technologies & Features in this codebase:</h2>
       <ul>
-        <li>Messaging RPC</li>
-        <li>Popup/Content API</li>
-        <li>React 18</li>
-        <li>Webpack 5</li>
-        <li>Babel 7</li>
+        <li>React 18.2.0</li>
+        <li>TypeScript 5.3.3</li>
+        <li>Webpack 5.90.3</li>
+        <li>Babel 7.23.9</li>
+        <li>RPC messaging system</li>
+        <li>Background service worker</li>
+        <li>Content scripts</li>
+        <li>API integration (icanhazdadjoke.com)</li>
+        <li>Chrome Extension Manifest V3</li>
+        <li>ESLint & Prettier</li>
+        <li>SCSS/CSS with PostCSS</li>
         <li>Hot reloading</li>
-        <li>ESLint</li>
-        <li>Prettier</li>
-        <li>TypeScript</li>
-        <li>SCSS/Sass</li>
+      </ul>
+      <h3>Additional Dependencies:</h3>
+      <ul>
+        <li>chucknorris-io</li>
+        <li>one-liner-joke</li>
       </ul>
       <div className="joke-wrapper">
+        <p><strong>Dad Joke API Demo:</strong></p>
         <p>{joke}</p>
       </div>
     </div>
