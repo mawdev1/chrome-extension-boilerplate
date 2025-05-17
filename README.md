@@ -7,11 +7,17 @@ This boilerplate provides a solid starting point for developing Chrome extension
 - **Messaging RPC**: Facilitates communication between different parts of the extension.
 - **Popup/Content API**: Enables interaction between the popup and content scripts.
 - **React 18**: Utilizes the latest React for building user interfaces.
-- **Webpack 5**: Bundles assets, scripts, and styles for deployment.
-- **Babel 7**: Transpiles ES6+ JavaScript to ensure compatibility across browsers.
-- **Hot Reloading**: Speeds up development by allowing live content updates without reloading the entire extension.
+- **TypeScript**: Full TypeScript support with proper type checking.
+- **SCSS/Sass**: Advanced styling with variables, nesting, and more.
+- **Webpack 5**: Bundles assets, scripts, and styles with optimization.
+- **Babel 7**: Transpiles modern JavaScript to ensure browser compatibility.
+- **Hot Reloading**: Speeds up development with live content updates.
 - **ESLint**: Maintains code quality with comprehensive linting rules.
-- **Prettier**: Automatically formats code to ensure consistency and readability.
+- **Prettier**: Automatically formats code for consistency.
+- **Chrome Storage API Utilities**: Simple Promise-based utilities for storage operations.
+- **Optimized Production Build**: Code splitting and minification for production.
+- **Chuck Norris Jokes**: Integration with chucknorris-io API.
+- **One-liner Jokes**: Integration with one-liner-joke package.
 
 ## Getting Started
 
@@ -26,7 +32,7 @@ Ensure you have Node.js installed on your system. You can download it from [Node
 1. **Clone the repository:**
 
 ```bash
-git clone https://github.com/mawdev1/chrome-extension-boilerplate.git
+git clone https://github.com/yourusername/chrome-extension-boilerplate.git
 cd chrome-extension-boilerplate
 ```
 
@@ -35,6 +41,8 @@ cd chrome-extension-boilerplate
 ```bash
 npm install
 ```
+
+or with yarn:
 
 ```bash
 yarn
@@ -45,7 +53,55 @@ yarn
 To start developing your Chrome extension with hot reloading, use:
 
 ```bash
+npm run dev
+```
+
+or with yarn:
+
+```bash
 yarn dev
+```
+
+This will start webpack in watch mode, which will automatically rebuild the extension when you make changes.
+
+### Type Checking
+
+To run TypeScript type checking, use:
+
+```bash
+npm run type-check
+```
+
+or with yarn:
+
+```bash
+yarn type-check
+```
+
+### Linting
+
+To lint your code, use:
+
+```bash
+npm run lint
+```
+
+or with yarn:
+
+```bash
+yarn lint
+```
+
+To automatically fix linting issues, use:
+
+```bash
+npm run lint:fix
+```
+
+or with yarn:
+
+```bash
+yarn lint:fix
 ```
 
 ### Building
@@ -53,8 +109,16 @@ yarn dev
 For a production build of your extension, use:
 
 ```bash
+npm run build
+```
+
+or with yarn:
+
+```bash
 yarn build
 ```
+
+This will create an optimized production build in the `dist` folder.
 
 ### Loading the Extension into Chrome
 
@@ -66,25 +130,87 @@ After building your extension, you can load it into Chrome to test it:
 
 Your extension is now loaded and ready for use.
 
-### Contributing
+## Project Structure
+
+```
+chrome-extension-boilerplate/
+├── public/                   # Public assets and scripts
+│   ├── icons/                # Extension icons
+│   ├── lib/                  # Utilities and helpers
+│   │   ├── api.ts            # API utilities
+│   │   ├── rpc.ts            # RPC messaging system
+│   │   └── storage.ts        # Chrome storage utilities
+│   ├── scripts/              # Extension scripts
+│   │   ├── background/       # Background service worker scripts
+│   │   └── content/          # Content scripts
+│   ├── styles/               # Global styles
+│   └── manifest.json         # Extension manifest
+├── src/                      # React application source
+│   ├── app/                  # React components
+│   │   └── App.tsx           # Main App component
+│   ├── styles/               # Component styles
+│   ├── popup.html            # Popup HTML template
+│   └── popup.tsx             # Popup entry point
+├── dist/                     # Build output directory
+├── .eslintrc.js              # ESLint configuration
+├── postcss.config.js         # PostCSS configuration
+├── tsconfig.json             # TypeScript configuration
+├── webpack.config.js         # Shared webpack configuration
+├── webpack.dev.js            # Development webpack configuration
+├── webpack.prod.js           # Production webpack configuration
+├── package.json              # NPM dependencies and scripts
+└── README.md                 # Project documentation
+```
+
+## Extension API
+
+### RPC System
+
+The RPC (Remote Procedure Call) system allows communication between different parts of the extension:
+
+```typescript
+// In background.js
+import RPC from '../lib/rpc';
+
+const rpc = new RPC();
+rpc.registerMethod('myMethod', async (param) => {
+  // Implement your method logic
+  return result;
+});
+
+// In popup or content script
+import api from '../lib/api';
+
+const result = await api.myMethod(param);
+```
+
+### Storage Utilities
+
+The storage utilities provide a simple interface to Chrome's storage API:
+
+```typescript
+import { syncStorage, localStorage, sessionStorage } from '../lib/storage';
+
+// Store data
+await syncStorage.set('key', value);
+
+// Retrieve data
+const value = await syncStorage.get('key');
+
+// Remove data
+await syncStorage.remove('key');
+```
+
+## Included Libraries
+
+- **chucknorris-io**: API client for Chuck Norris jokes
+- **one-liner-joke**: Generate random one-liner jokes
+- **React & React DOM**: UI library for building the popup interface
+
+## Contributing
 
 Contributions are welcome! Please feel free to submit a pull request or create an issue for any bugs or feature requests.
 
-#### Submitting a Pull Request
+## License
 
-1. Once your changes are pushed, navigate to the original repository you forked on GitHub.
-2. You'll see a prompt to submit a pull request from your branch. Click the "Compare & pull request" button to begin the process.
-3. In your pull request, provide a detailed description of the changes and why they are needed. Include any relevant issue numbers.
-4. After submitting, maintainers of the original repository will review your changes. If there are any comments or requests for changes, please address them.
-
-#### Review Process
-
-- Once your pull request is submitted, it will be reviewed by the maintainers. This process helps ensure that the quality of the project is maintained and that everyone's contributions can be integrated smoothly.
-- If your pull request is approved, a maintainer will merge it into the main branch. Congratulations, and thank you for your contribution!
-- If changes are requested, please address them promptly. It's normal for a few iterations of review and updates before your contribution is accepted.
-
-Your contributions are greatly appreciated, and they help make this project better for everyone. Thank you for taking the time to contribute!
-
-### License
-
-This project is licensed under the MIT License.
+This project is licensed under the ISC License.

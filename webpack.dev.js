@@ -1,7 +1,12 @@
 const { merge } = require('webpack-merge')
-const config = require('./webpack.config.js')
+const common = require('./webpack.config.js')
+const path = require('path')
 
-module.exports = merge(config, {
+module.exports = merge(common, {
     mode: 'development',
-    devtool: 'inline-source-map'
+    devtool: 'inline-source-map',
+    watch: true,
+    watchOptions: {
+        ignored: /node_modules/,
+    },
 })
