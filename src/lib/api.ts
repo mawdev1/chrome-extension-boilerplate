@@ -1,12 +1,11 @@
-import RPC from './rpc'
+import { RPC } from '@/lib/rpc'
 
 interface API {
-  getDadJoke: () => Promise<string>;
+  getDadJoke: () => Promise<string>
 }
 
 const rpc = new RPC()
 
-// Example API method
 function getDadJoke(): Promise<string> {
   return rpc.invoke('getDadJoke')
 }
@@ -15,4 +14,6 @@ const api: API = {
   getDadJoke,
 }
 
-export default api 
+export default api
+
+
